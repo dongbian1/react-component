@@ -1,0 +1,37 @@
+{
+  "name": "packages",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "peerDependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@babel/register": "^7.22.15",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@storybook/addon-essentials": "7.5.3",
+    "@storybook/addon-interactions": "7.5.3",
+    "@storybook/addon-links": "7.5.3",
+    "@storybook/addon-onboarding": "1.0.8",
+    "@storybook/blocks": "7.5.3",
+    "@storybook/react": "7.5.3",
+    "@storybook/react-vite": "7.5.3",
+    "@storybook/testing-library": "0.2.2",
+    "eslint-plugin-storybook": "^0.6.15",
+    "prop-types": "15.8.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "storybook": "7.5.3"
+  },
+  "dependencies": {
+    "vite-plugin-dts": "^3.6.3"
+  }
+}

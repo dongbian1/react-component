@@ -1,0 +1,20 @@
+{
+  "name": "react-cjx-ui",
+  "version": "1.0.0",
+  "description": "基于antd UI 框架 React自定义UI组件",
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
+  "files": [
+    "es",
+    "lib"
+  ],
+  "keywords": [
+    "react",
+    "react-cjx",
+    "react-cjx-ui",
+    "react自定义组件"
+  ],
+  "author": "cjx",
+  "license": "MIT",
+  "typings": "lib/index.d.ts"
+}
