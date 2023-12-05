@@ -7,9 +7,9 @@ import dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 const sass = gulpSass(dartSass);
 
-//删除cjx-zdy-ui
+//删除react-cjx-ui
 export const remove = () => {
-  return delPath(`${pkgPath}/packages/cjx-zdy-ui`)
+  return delPath(`${pkgPath}/packages/react-cjx-ui`)
 };
 
 
@@ -18,8 +18,8 @@ export const buildStyle = () => {
   return src(`${componentPath}/src/**/style/**.scss`)
     .pipe(sass())
     .pipe(autoprefixer())
-    .pipe(dest(`${pkgPath}/packages/cjx-zdy-ui/lib/src`))
-    .pipe(dest(`${pkgPath}/packages/cjx-zdy-ui/es/src`));
+    .pipe(dest(`${pkgPath}/packages/react-cjx-ui/lib/src`))
+    .pipe(dest(`${pkgPath}/packages/react-cjx-ui/es/src`));
 };
 
 //打包组件

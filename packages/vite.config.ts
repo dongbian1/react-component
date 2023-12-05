@@ -18,11 +18,14 @@ export default defineConfig({
       //忽略打包文件
       external: [
         'react',
+        'react-dom',
+        /\antd/,
+        /\ant-design/,
+        /\react/,
         /\.scss/,
         /\.stories.ts/
       ],
       input: ['./src/index.ts'],
-      
       output: [
         {
           format: 'es',
@@ -37,15 +40,21 @@ export default defineConfig({
           preserveModules: true,
           preserveModulesRoot: 'src',
           exports: 'named',
+          globals: {
+            react: "react",
+            antd: "antd",
+            "react-dom": "react-dom",
+            '@ant-design': '@ant-design',
+          },
           //配置打包根目录
-          dir: resolve(__dirname, './cjx-zdy-ui/es'),
+          dir: resolve(__dirname, './react-cjx-ui/es'),
         },
         {
           format: 'cjs',
           //不用打包成.cjs
           entryFileNames: (name) => {
             if (['default', 'Button'].includes(name.exports[0])) {
-              return 'src/[name].mjs'
+              return 'src/[name].js'
             }
             return '[name].js'
           },
@@ -53,8 +62,14 @@ export default defineConfig({
           preserveModules: true,
           preserveModulesRoot: 'src',
           exports: 'named',
+          globals: {
+            react: "react",
+            antd: "antd",
+            "react-dom": "react-dom",
+            '@ant-design': '@ant-design',
+          },
           //配置打包根目录
-          dir: resolve(__dirname, './cjx-zdy-ui/lib'),
+          dir: resolve(__dirname, './react-cjx-ui/lib'),
         }
       ]
     },
@@ -65,6 +80,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    // @ts-ignore
     dts({
       include: ['index.ts', './src'],
       cleanVueFileName: true,
@@ -72,8 +88,8 @@ export default defineConfig({
       entryRoot: 'src',
       exclude: './src/stories',
       outDir: [
-        resolve(__dirname, './cjx-zdy-ui/es/src'),
-        resolve(__dirname, './cjx-zdy-ui/lib/src')
+        resolve(__dirname, './react-cjx-ui/es/src'),
+        resolve(__dirname, './react-cjx-ui/lib/src')
       ],
       //指定使用的tsconfig.json为我们整个项目根目录下掉,如果不配置,你也可以在components下新建tsconfig.json
       tsconfigPath: resolve(__dirname, '../packages/tsconfig.json'),
@@ -100,7 +116,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src')
+      '@packages': resolve(__dirname, 'src')
     }
   }
 });

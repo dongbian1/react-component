@@ -5,6 +5,7 @@
     "strict": true,
     "target": "ES2015",
     "module": "ESNext",
+    "types": ["./node_modules/@types/babel__core"],
     "skipLibCheck": true,
     "esModuleInterop": true,
     "moduleResolution": "Node",
@@ -13,7 +14,8 @@
     "emitDeclarationOnly": true, // 只输出声明文件(ts 产物)
     "declaration": true, // 自动生成声明文件
     "paths": {
-      "@/*": ["packages/src/*"]
+      "@packages/*": ["packages/src/*"],
+      "@examples/*": ["examples/src/*"]
     }
   }
 }

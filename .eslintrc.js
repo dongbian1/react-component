@@ -23,6 +23,8 @@ module.exports = {
   rules: {
     "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
     "unused-imports/no-unused-imports": "warn",
+    // 允许any
+    "@typescript-eslint/no-explicit-any": ["off"],
     "unused-imports/no-unused-vars": [
       "warn",
       {

@@ -23,7 +23,7 @@ const delPath = async (path: string) => {
       }
     });
 
-    if (path != `${pkgPath}/packages/cjx-zdy-ui`) fs.rmdirSync(path);
+    if (path != `${pkgPath}/packages/react-cjx-ui`) fs.rmdirSync(path);
   }
 };
 export default delPath;
