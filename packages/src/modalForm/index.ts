@@ -1,4 +1,4 @@
-import ModalForm from "./modal";
+import ModalForm from './modal';
 
-export type { ModalFormProp } from "./types";
+export type { ModalFormProp } from './types';
 export default ModalForm;

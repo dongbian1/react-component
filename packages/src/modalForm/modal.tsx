@@ -1,4 +1,4 @@
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined } from '@ant-design/icons';
 import {
   Col,
   DatePicker,
@@ -13,12 +13,12 @@ import {
   Switch,
   TreeSelect,
   Upload,
-} from "antd";
-import { useForm } from "antd/es/form/Form";
-import { UploadChangeParam, UploadFile } from "antd/es/upload";
-import { useEffect, useState } from "react";
+} from 'antd';
+import { useForm } from 'antd/es/form/Form';
+import { UploadChangeParam, UploadFile } from 'antd/es/upload';
+import { useEffect, useState } from 'react';
 
-import { ModalFormItem, ModalFormProp } from "./types";
+import { ModalFormItem, ModalFormProp } from './types';
 
 const formItemMinLayout = {
   labelCol: {
@@ -48,7 +48,7 @@ const ModalForm: React.FC<ModalFormProp> = ({
     form: useForm()[0],
   },
   formItem,
-  formLayout = "one",
+  formLayout = 'one',
   onSubmit,
   modalFooter,
   ...modalProps
@@ -82,16 +82,16 @@ const ModalForm: React.FC<ModalFormProp> = ({
   const onFormSubmit = () => {
     formProps.form?.validateFields().then((values) => {
       const uploadNameArr = formItem
-        .filter((item) => item.type === "upload")
+        .filter((item) => item.type === 'upload')
         .map((item) => item.name);
       if (uploadNameArr.length > 0) {
         for (let i = 0; i < uploadNameArr.length; i++) {
           const key = uploadNameArr[i];
           const errNum = values[key]?.filter(
-            (uItem: UploadFile) => uItem.status === "error"
+            (uItem: UploadFile) => uItem.status === 'error'
           );
           if (errNum && errNum.length > 0) {
-            message.error("上传组件中存在上传失败文件，请删除后操作~");
+            message.error('上传组件中存在上传失败文件，请删除后操作~');
             return;
           }
         }
@@ -115,10 +115,10 @@ const ModalForm: React.FC<ModalFormProp> = ({
    */
   const propName = (item: ModalFormItem) => {
     switch (item.type) {
-      case "switch":
-        return "checked";
-      case "upload":
-        return "fileList";
+      case 'switch':
+        return 'checked';
+      case 'upload':
+        return 'fileList';
       default:
         return undefined;
     }
@@ -150,7 +150,7 @@ const ModalForm: React.FC<ModalFormProp> = ({
   const verifyUploadBottom = () => {
     const bottom: { [key: string]: boolean } = {};
     formItem
-      ?.filter((item) => item.type === "upload")
+      ?.filter((item) => item.type === 'upload')
       .map((item) => {
         bottom[item.name] = true;
         if (item.enterProps?.uploadNumber) {
@@ -168,7 +168,7 @@ const ModalForm: React.FC<ModalFormProp> = ({
   const uploadBut = (
     <div>
       <PlusOutlined />
-      <div className="ant-upload-text">上传</div>
+      <div className='ant-upload-text'>上传</div>
     </div>
   );
 
@@ -178,7 +178,7 @@ const ModalForm: React.FC<ModalFormProp> = ({
     name: string
   ) => {
     const fileList = file.fileList
-      ?.filter((item) => item.status === "done")
+      ?.filter((item) => item.status === 'done')
       .map((fileItem: any, index: number) => {
         if (fileItem.response && fileItem.response.code === 200) {
           return {
@@ -189,7 +189,7 @@ const ModalForm: React.FC<ModalFormProp> = ({
           };
         }
       });
-    if (file.file.status === "done") {
+    if (file.file.status === 'done') {
       formProps.form?.setFieldsValue({
         ...formProps.form?.getFieldsValue(),
         [name]: fileList,
@@ -218,29 +218,29 @@ const ModalForm: React.FC<ModalFormProp> = ({
       return item.render();
     }
     switch (item.type) {
-      case "input":
+      case 'input':
         return (
           <Input placeholder={`请输入${item.title}`} {...item.enterProps} />
         );
-      case "password":
+      case 'password':
         return (
           <Input.Password
             placeholder={`请输入${item.title}`}
             {...item.enterProps}
           />
         );
-      case "inputNumber":
+      case 'inputNumber':
         return (
           <InputNumber
             placeholder={`请输入${item.title}`}
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
             min={0}
             {...item.enterProps}
           />
         );
-      case "textArea":
+      case 'textArea':
         return <Input.TextArea rows={2} {...item.enterProps} />;
-      case "select":
+      case 'select':
         return (
           <Select
             placeholder={`请选择${item.title}`}
@@ -260,26 +260,26 @@ const ModalForm: React.FC<ModalFormProp> = ({
             })}
           </Select>
         );
-      case "treeSelect":
+      case 'treeSelect':
         return (
           <TreeSelect
             placeholder={`请选择${item.title}`}
             {...item.enterProps}
           />
         );
-      case "switch":
+      case 'switch':
         return (
           <Switch
             checkedChildren={
-              item.enterProps ? item.enterProps.checkedChildren : "开"
+              item.enterProps ? item.enterProps.checkedChildren : '开'
             }
             unCheckedChildren={
-              item.enterProps ? item.enterProps.unCheckedChildren : "关"
+              item.enterProps ? item.enterProps.unCheckedChildren : '关'
             }
             {...item.enterProps}
           />
         );
-      case "radio":
+      case 'radio':
         return (
           <Radio.Group {...item.enterProps}>
             {item.selectArr?.map((selectItem) => {
@@ -291,15 +291,15 @@ const ModalForm: React.FC<ModalFormProp> = ({
             })}
           </Radio.Group>
         );
-      case "upload":
+      case 'upload':
         return (
           <Upload
             withCredentials
-            listType="picture-card"
-            accept=".jpg,.png,.jpeg,.bmp"
+            listType='picture-card'
+            accept='.jpg,.png,.jpeg,.bmp'
             beforeUpload={(file) => {
               if (file.size / 1024 / 1024 > 2) {
-                message.error("请选择大小在2M以内图片！");
+                message.error('请选择大小在2M以内图片！');
                 return false;
               }
             }}
@@ -314,17 +314,17 @@ const ModalForm: React.FC<ModalFormProp> = ({
               : uploadBut}
           </Upload>
         );
-      case "datePicker":
+      case 'datePicker':
         return (
           <DatePicker
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
             placeholder={`请选择${item.title}`}
             {...item.enterProps}
           />
         );
-      case "rangePicker":
+      case 'rangePicker':
         return (
-          <DatePicker.RangePicker format="YYYY-MM-DD" {...item.enterProps} />
+          <DatePicker.RangePicker format='YYYY-MM-DD' {...item.enterProps} />
         );
     }
   };
@@ -356,10 +356,10 @@ const ModalForm: React.FC<ModalFormProp> = ({
               return (
                 <Col
                   key={item.name}
-                  span={formLayout === "one" ? 24 : 12}
+                  span={formLayout === 'one' ? 24 : 12}
                   style={
-                    item.type === "upload"
-                      ? { position: "relative" }
+                    item.type === 'upload'
+                      ? { position: 'relative' }
                       : undefined
                   }
                 >
@@ -369,7 +369,7 @@ const ModalForm: React.FC<ModalFormProp> = ({
                     rules={item.rules}
                     valuePropName={propName(item)}
                     getValueFromEvent={
-                      item.type === "upload"
+                      item.type === 'upload'
                         ? (args) => normFile(args, item.name)
                         : undefined
                     }
@@ -388,7 +388,7 @@ const ModalForm: React.FC<ModalFormProp> = ({
         footer={null}
         onCancel={handleCancel}
       >
-        <img alt="example" style={{ width: "100%" }} src={previewImage} />
+        <img alt='example' style={{ width: '100%' }} src={previewImage} />
       </Modal>
     </>
   );

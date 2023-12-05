@@ -20,6 +20,7 @@ module.exports = {
     "unused-imports",
     "simple-import-sort",
   ],
+  ignorePatterns: ["/**/react-cjx-ui"],
   rules: {
     "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
     "unused-imports/no-unused-imports": "warn",

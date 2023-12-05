@@ -7,7 +7,7 @@
     "dev": "pnpm run --filter ./examples dev",
     "ui:build": "gulp -f packages/script/build/index.ts",
     "storybook": "pnpm run --filter ./packages storybook",
-    "prettier": "prettier --write ./**/src/*.{js,json,ts,tsx}",
+    "prettier": "prettier --write ./**/src/**/*.{js,json,ts,tsx}",
     "prepare": "husky install",
     "eslint": "eslint --fix ./**/src/*.{js,json,ts,tsx}"
   },

@@ -1,14 +1,14 @@
-import { ModalProps } from "antd";
-import { FormProps, Rule } from "antd/es/form";
-import { ReactNode } from "react";
+import { ModalProps } from 'antd';
+import { FormProps, Rule } from 'antd/es/form';
+import { ReactNode } from 'react';
 
 export interface ModalFormProp<T = any, V = any> extends ModalProps {
   // Form 表单数据
   data?: T;
   // Form 表单 form属性，方便父级组件通过useForm 操作Form表单
-  formProps?: Omit<FormProps, "children">;
+  formProps?: Omit<FormProps, 'children'>;
   // Form 表单每行显示个数
-  formLayout?: "one" | "two";
+  formLayout?: 'one' | 'two';
   // 每个FormItem
   formItem: ModalFormItem[];
   // Form表单验证提交事件，此事件会返回form验证完成之后参数
@@ -20,7 +20,7 @@ export interface ModalFormProp<T = any, V = any> extends ModalProps {
   // modal 框底部按钮属性，如果未传入footerOk事件将调用onSubmit，如果未传入cancel事件将调用onCancel
   modalFooter?: (
     ok: () => void,
-    cancel: (() => void) | ModalProps["onCancel"]
+    cancel: (() => void) | ModalProps['onCancel']
   ) => ReactNode;
 }
 
@@ -32,18 +32,18 @@ export interface ModalFormItem {
   title: string;
   // 输入框类型
   type:
-    | "input"
-    | "password"
-    | "inputNumber"
-    | "textArea"
-    | "select"
-    | "cascader"
-    | "switch"
-    | "radio"
-    | "upload"
-    | "datePicker"
-    | "rangePicker"
-    | "treeSelect";
+    | 'input'
+    | 'password'
+    | 'inputNumber'
+    | 'textArea'
+    | 'select'
+    | 'cascader'
+    | 'switch'
+    | 'radio'
+    | 'upload'
+    | 'datePicker'
+    | 'rangePicker'
+    | 'treeSelect';
   // Form name属性
   name: string;
   // 验证规则
