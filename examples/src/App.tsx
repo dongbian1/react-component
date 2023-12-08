@@ -1,10 +1,13 @@
 import { Button, Col, Flex, Row } from 'antd';
-import { useState } from 'react';
-import { Button as CButton, ModalForm } from 'react-cjx-ui';
+import { useRef, useState } from 'react';
+import { Button as CButton, CheckImg,ModalForm } from 'react-cjx-ui';
+import { CheckImgRef } from 'react-cjx-ui/src/checkImg';
 import { ModalFormItem } from 'react-cjx-ui/src/modalForm/types';
 
 const App: React.FC = () => {
   const [visible, setVisible] = useState<boolean>(false);
+
+  const imgRef = useRef<CheckImgRef>(null);
 
   const formItem: ModalFormItem[] = [
     {
@@ -88,8 +91,28 @@ const App: React.FC = () => {
           label='测试ModalForm框'
           primary
           onClick={() => setVisible(true)}
-        ></CButton>
+        />
+        <CButton
+          label='测试CheckImg'
+          primary
+          onClick={() => {
+            imgRef.current?.show(
+              [
+                'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+                'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+                'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+                'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+                'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+                'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+                'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+                'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+              ],
+              0
+            );
+          }}
+        />
       </Flex>
+      <CheckImg ref={imgRef} title='测试CheckImg' />
       <ModalForm
         open={visible}
         width={500}
